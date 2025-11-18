@@ -5,6 +5,8 @@ Implementado:
 :white_check_mark: tests/test_cliente.py::TestCliente::test_igualdade_outro_tipo  
 :white_check_mark: tests/test_system.py::TestSystem::test_adicionar_cliente  
 :white_check_mark: tests/test_system.py::TestSystem::test_remove_cliente_por_telefone  
+:white_check_mark: tests/test_system.py::TestSystem::test_buscar_clientes  
+:white_check_mark: tests/test_system.py::TestSystem::test_busca_sem_resultados  
 
 A implementar:
 
@@ -35,10 +37,8 @@ A implementar:
 :black_square_button: tests/test_system.py::TestSystem::test_mostrar_cardapio_com_itens  
 :black_square_button: tests/test_pedido.py::TestPedido::test_valor_total_sem_itens  
 :black_square_button: tests/test_pedido.py::TestPedido::test_fechar_pedido_sem_itens  
-:black_square_button: tests/test_system.py::TestSystem::test_buscar_clientes  
 :black_square_button: tests/test_system.py::TestSystem::test_processar_proximo_pedido_fila_vazia  
 :black_square_button: tests/test_system.py::TestSystem::test_mostrar_cardapio_vazio  
-:black_square_button: tests/test_system.py::TestSystem::test_busca_sem_resultados  
 :black_square_button: tests/test_system.py::TestSystem::test_avancar_status_primeiro_pedido  
 :black_square_button: tests/test_system.py::TestSystem::test_cancelar_primeiro_pedido  
 :black_square_button: tests/test_system.py::TestSystem::test_definir_forma_pagamento_primeiro_pedido  
