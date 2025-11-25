@@ -6,6 +6,7 @@ class ItemPedido:
         self.opcao_menu = cardapio
         self.quantidade = quantidade
         self.observacao = observacao
+        self.valor_total = cardapio.valor * quantidade
 
 
 class QuantidadeInvalidaError:

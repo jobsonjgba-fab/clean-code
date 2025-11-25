@@ -22,6 +22,8 @@
 
 :white_check_mark: tests/test_item_pedido.py::TestItemPedido::test_atributos_basicos  
 :white_check_mark: tests/test_pedido.py::TestPedido::test_preserva_ordem_itens  
+:white_check_mark: tests/test_item_pedido.py::TestItemPedido::test_valor_total  
+:white_check_mark: tests/test_item_pedido.py::TestItemPedido::test_valor_total_zero  
 
 | 8 | Adicionar opções ao cardápio  
 
@@ -48,8 +50,6 @@
 
 | 5 | Inserir itens ao pedido (depende de | 4 | e | 8 |)  
 
-:black_square_button: tests/test_item_pedido.py::TestItemPedido::test_valor_total  
-:black_square_button: tests/test_item_pedido.py::TestItemPedido::test_valor_total_zero  
 :black_square_button: tests/test_pedido.py::TestPedido::test_item_quantidade_nao_pode_ser_negativa  
 :black_square_button: tests/test_pedido.py::TestPedido::test_item_quantidade_deve_ser_inteira  
 

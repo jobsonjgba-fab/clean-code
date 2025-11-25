@@ -20,7 +20,7 @@ class Pedido:
 
     def add_item(self, item: ItemPedido):
         self.itens.append(item)
-        self.valor_total += item.opcao_menu.valor * item.quantidade
+        self.valor_total += item.valor_total
 
 
 class FormaPagamento:
