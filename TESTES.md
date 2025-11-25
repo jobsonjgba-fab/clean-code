@@ -16,6 +16,7 @@
 | 4 | Criar novo pedido  
 
 :white_check_mark: tests/test_pedido.py::TestPedido::test_attributes_and_item_management :white_check_mark: tests/test_pedido.py::TestPedido::test_valor_total_sem_itens  
+:black_square_button: tests/test_system.py::TestSystem::test_adicionar_pedido  
 
 | 5 | Inserir itens ao pedido  
 
@@ -37,10 +38,6 @@
 | 7 | e | 10 | e | 11 | por último  
 
 ## Restantes
-
-| 4 | Criar novo pedido  
-
-:black_square_button: tests/test_system.py::TestSystem::test_adicionar_pedido  
 
 | 5 | Inserir itens ao pedido (depende de | 4 | e | 8 |)  
 
