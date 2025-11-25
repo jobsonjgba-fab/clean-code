@@ -27,6 +27,8 @@
 
 :white_check_mark: tests/test_cardapio.py::TestCardapio::test_atributos_basicos  
 :white_check_mark: tests/test_cardapio.py::TestCardapio::test_igualdade  
+:white_check_mark: tests/test_cardapio.py::TestCardapio::test_igualdade_outro_tipo  
+:white_check_mark: tests/test_system.py::TestSystem::test_adicionar_item_cardapio  
 
 
 # A implementar:
@@ -59,11 +61,6 @@
 | 7 | Listar pedidos em aberto (depende de | 4 | e | 6 |)  
 
 :black_square_button: tests/test_system.py::TestSystem::test_listar_pedidos_abertos_mostra_status  
-
-| 8 | Adicionar opções ao cardápio  
-
-:black_square_button: tests/test_cardapio.py::TestCardapio::test_igualdade_outro_tipo  
-:black_square_button: tests/test_system.py::TestSystem::test_adicionar_item_cardapio  
 
 | 9 | Apresentar as opções do cardápio (depende de | 8 |)  
 

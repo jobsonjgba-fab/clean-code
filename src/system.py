@@ -1,15 +1,19 @@
 from collections import deque
 
-from . import Cliente, Pedido
+from . import Cardapio, Cliente, Pedido
 
 
 class System:
     def __init__(self):
         self.clientes: list[Cliente] = []
         self.pedidos_abertos: deque[Pedido] = deque()
+        self.cardapio: list[Cardapio] = []
 
     def add_cliente(self, cliente: Cliente) -> None:
         self.clientes.append(cliente)
+
+    def add_item_cardapio(self, prato: Cardapio) -> None:
+        self.cardapio.append(prato)
 
     def add_pedido(self, pedido: Pedido) -> None:
         self.pedidos_abertos.append(pedido)
