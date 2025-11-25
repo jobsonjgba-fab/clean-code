@@ -27,6 +27,8 @@ class System:
         #     else:
         #         listagem_cardapio += self.cardapio[index].descricao + "\n"
         # return listagem_cardapio
+        # TODO: outra alternativa:
+        # return "\n".join(map(lambda x: x.descricao, self.cardapio))
         return "\n".join(item.descricao for item in self.cardapio)
 
     def remove_cliente_por_telefone(self, telefone: str) -> None:
