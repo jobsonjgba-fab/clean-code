@@ -16,12 +16,12 @@
 | 4 | Criar novo pedido  
 
 :white_check_mark: tests/test_pedido.py::TestPedido::test_attributes_and_item_management :white_check_mark: tests/test_pedido.py::TestPedido::test_valor_total_sem_itens  
-:black_square_button: tests/test_system.py::TestSystem::test_adicionar_pedido  
+:white_check_mark: tests/test_system.py::TestSystem::test_adicionar_pedido  
 
 | 5 | Inserir itens ao pedido  
 
 :white_check_mark: tests/test_item_pedido.py::TestItemPedido::test_atributos_basicos  
-:black_square_button: tests/test_pedido.py::TestPedido::test_preserva_ordem_itens  
+:white_check_mark: tests/test_pedido.py::TestPedido::test_preserva_ordem_itens  
 
 | 8 | Adicionar opções ao cardápio  
 
