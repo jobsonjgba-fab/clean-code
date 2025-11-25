@@ -13,6 +13,10 @@
 :white_check_mark: tests/test_system.py::TestSystem::test_buscar_clientes  
 :white_check_mark: tests/test_system.py::TestSystem::test_busca_sem_resultados  
 
+| 4 | Criar novo pedido  
+
+:white_check_mark: tests/test_pedido.py::TestPedido::test_attributes_and_item_management  
+
 | 5 | Inserir itens ao pedido  
 
 :white_check_mark: tests/test_item_pedido.py::TestItemPedido::test_atributos_basicos  
@@ -27,15 +31,14 @@
 
 ## Sugestão de sequência
 
-| 4 |, | 8 | e | 11 | primeiro  
+| 4 |, | 8 | primeiro  
 | 5 |, | 6 | e | 9 | em seguida  
-| 7 | e | 10 | por último  
+| 7 | e | 10 | e | 11 | por último  
 
 ## Restantes
 
 | 4 | Criar novo pedido  
 
-:black_square_button: tests/test_pedido.py::TestPedido::test_attributes_and_item_management  
 :black_square_button: tests/test_pedido.py::TestPedido::test_valor_total_sem_itens  
 :black_square_button: tests/test_system.py::TestSystem::test_adicionar_pedido  
 
