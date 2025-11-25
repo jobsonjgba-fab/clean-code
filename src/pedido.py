@@ -9,7 +9,7 @@ class Pedido:
         cliente: Cliente,
         data_pedido: datetime,
         endereco: str,
-        situacao_aberto: bool,
+        situacao_aberto: bool = True,
     ):
         self.cliente = cliente
         self.data_hora = data_pedido
