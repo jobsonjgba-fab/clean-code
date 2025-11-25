@@ -13,6 +13,11 @@
 :white_check_mark: tests/test_system.py::TestSystem::test_buscar_clientes  
 :white_check_mark: tests/test_system.py::TestSystem::test_busca_sem_resultados  
 
+| 8 | Adicionar opções ao cardápio  
+
+:white_check_mark: tests/test_cardapio.py::TestCardapio::test_atributos_basicos  
+
+
 # A implementar:
 
 ## Sugestão de sequência
@@ -54,7 +59,6 @@
 
 | 8 | Adicionar opções ao cardápio  
 
-:black_square_button: tests/test_cardapio.py::TestCardapio::test_atributos_basicos  
 :black_square_button: tests/test_cardapio.py::TestCardapio::test_igualdade  
 :black_square_button: tests/test_cardapio.py::TestCardapio::test_igualdade_outro_tipo  
 :black_square_button: tests/test_system.py::TestSystem::test_adicionar_item_cardapio  
