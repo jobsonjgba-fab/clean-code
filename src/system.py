@@ -18,6 +18,17 @@ class System:
     def add_pedido(self, pedido: Pedido) -> None:
         self.pedidos_abertos.append(pedido)
 
+    def mostrar_cardapio(self) -> str:
+        # TODO: discutir opção na apresentação
+        # listagem_cardapio = ""
+        # for index in range(len(self.cardapio)):
+        #     if index + 1 == len(self.cardapio):
+        #         listagem_cardapio += self.cardapio[index].descricao
+        #     else:
+        #         listagem_cardapio += self.cardapio[index].descricao + "\n"
+        # return listagem_cardapio
+        return "\n".join(item.descricao for item in self.cardapio)
+
     def remove_cliente_por_telefone(self, telefone: str) -> None:
         """
         Filtra a lista de clientes, deixando permanecer apenas
