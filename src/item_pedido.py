@@ -2,13 +2,27 @@ from . import Cardapio
 
 
 class ItemPedido:
-    def __init__(self, cardapio: Cardapio, quantidade: int, observacao: str):
+    def __init__(self, cardapio: Cardapio, quantidade, observacao: str):
+        if not isinstance(quantidade, int):
+            raise QuantidadeInvalidaError()
         if quantidade < 0:
             raise QuantidadeInvalidaError()
         self.opcao_menu = cardapio
-        self.quantidade = quantidade
+        self._quantidade = quantidade
         self.observacao = observacao
         self.valor_total = cardapio.valor * quantidade
+
+    @property
+    def quantidade(self) -> int:
+        return self._quantidade
+
+    @quantidade.setter
+    def quantidade(self, value) -> None:
+        if not isinstance(value, int):
+            raise QuantidadeInvalidaError()
+        if value < 0:
+            raise QuantidadeInvalidaError()
+        self._quantidade = value
 
 
 class QuantidadeInvalidaError(ValueError):
