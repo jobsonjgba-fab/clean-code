@@ -13,6 +13,10 @@
 :white_check_mark: tests/test_system.py::TestSystem::test_buscar_clientes  
 :white_check_mark: tests/test_system.py::TestSystem::test_busca_sem_resultados  
 
+| 5 | Inserir itens ao pedido  
+
+:white_check_mark: tests/test_item_pedido.py::TestItemPedido::test_atributos_basicos  
+
 | 8 | Adicionar opções ao cardápio  
 
 :white_check_mark: tests/test_cardapio.py::TestCardapio::test_atributos_basicos  
@@ -37,7 +41,6 @@
 
 | 5 | Inserir itens ao pedido (depende de | 4 | e | 8 |)  
 
-:black_square_button: tests/test_item_pedido.py::TestItemPedido::test_atributos_basicos  
 :black_square_button: tests/test_item_pedido.py::TestItemPedido::test_valor_total  
 :black_square_button: tests/test_item_pedido.py::TestItemPedido::test_valor_total_zero  
 :black_square_button: tests/test_pedido.py::TestPedido::test_item_quantidade_nao_pode_ser_negativa  
