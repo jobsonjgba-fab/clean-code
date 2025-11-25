@@ -16,6 +16,7 @@
 | 8 | Adicionar opções ao cardápio  
 
 :white_check_mark: tests/test_cardapio.py::TestCardapio::test_atributos_basicos  
+:white_check_mark: tests/test_cardapio.py::TestCardapio::test_igualdade  
 
 
 # A implementar:
@@ -59,7 +60,6 @@
 
 | 8 | Adicionar opções ao cardápio  
 
-:black_square_button: tests/test_cardapio.py::TestCardapio::test_igualdade  
 :black_square_button: tests/test_cardapio.py::TestCardapio::test_igualdade_outro_tipo  
 :black_square_button: tests/test_system.py::TestSystem::test_adicionar_item_cardapio  
 
