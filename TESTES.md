@@ -15,7 +15,8 @@
 
 | 4 | Criar novo pedido  
 
-:white_check_mark: tests/test_pedido.py::TestPedido::test_attributes_and_item_management :white_check_mark: tests/test_pedido.py::TestPedido::test_valor_total_sem_itens  
+:white_check_mark: tests/test_pedido.py::TestPedido::test_attributes_and_item_management  
+:white_check_mark: tests/test_pedido.py::TestPedido::test_valor_total_sem_itens  
 :white_check_mark: tests/test_system.py::TestSystem::test_adicionar_pedido  
 
 | 5 | Inserir itens ao pedido  
