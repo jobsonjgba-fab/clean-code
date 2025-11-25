@@ -27,6 +27,9 @@
 :white_check_mark: tests/test_pedido.py::TestPedido::test_item_quantidade_nao_pode_ser_negativa  
 :white_check_mark: tests/test_pedido.py::TestPedido::test_item_quantidade_deve_ser_inteira  
 
+| 7 | Listar pedidos em aberto  
+
+:white_check_mark: tests/test_system.py::TestSystem::test_listar_pedidos_abertos_mostra_status  
 
 | 8 | Adicionar opções ao cardápio  
 
@@ -60,10 +63,6 @@
 :black_square_button: tests/test_system.py::TestSystem::test_fluxo_processamento_pedidos  
 :black_square_button: tests/test_system.py::TestSystem::test_avancar_status_primeiro_pedido  
 :black_square_button: tests/test_system.py::TestSystem::test_processar_proximo_pedido_fila_vazia  
-
-| 7 | Listar pedidos em aberto (depende de | 4 | e | 6 |)  
-
-:black_square_button: tests/test_system.py::TestSystem::test_listar_pedidos_abertos_mostra_status  
 
 | 10 | Cancelar pedido (depende de | 4 | e | 6 |)  
 

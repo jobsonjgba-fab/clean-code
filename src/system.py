@@ -1,6 +1,6 @@
 from collections import deque
 
-from . import Cardapio, Cliente, Pedido
+from . import Cardapio, Cliente, Pedido, StatusPedido
 
 
 class System:
@@ -17,6 +17,17 @@ class System:
 
     def add_pedido(self, pedido: Pedido) -> None:
         self.pedidos_abertos.append(pedido)
+
+    def listar_pedidos_abertos(self) -> list:
+        return list(
+            (pedido, pedido.status_pedido)
+            for pedido
+            in self.pedidos_abertos
+        )
+
+    def avancar_status_primeiro_pedido(self) -> None:
+        # TODO: implementar corretamente a lógica de avanço de status do pedido
+        self.pedidos_abertos[0].status_pedido = StatusPedido.EM_PREPARO
 
     def mostrar_cardapio(self) -> str:
         # TODO: discutir opção na apresentação

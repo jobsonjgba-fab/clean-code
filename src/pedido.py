@@ -1,4 +1,5 @@
 from datetime import datetime
+from enum import Enum
 
 from . import Cliente, ItemPedido
 
@@ -15,6 +16,7 @@ class Pedido:
         self.data_hora = data_pedido
         self.endereco = endereco
         self.situacao_aberto = situacao_aberto
+        self.status_pedido = StatusPedido.RECEBIDO
         self.valor_total = 0
         self.itens = []
 
@@ -27,8 +29,9 @@ class FormaPagamento:
     pass
 
 
-class StatusPedido:
-    pass
+class StatusPedido(Enum):
+    EM_PREPARO = 'em preparo'
+    RECEBIDO = 'recebido'
 
 
 class FormaPagamentoInvalidaError:
