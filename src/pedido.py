@@ -17,12 +17,14 @@ class Pedido:
         self.endereco = endereco
         self.situacao_aberto = situacao_aberto
         self.status = StatusPedido.RECEBIDO
-        self.valor_total = 0
         self.itens = []
 
-    def add_item(self, item: ItemPedido):
+    @property
+    def valor_total(self) -> float:
+        return sum(item.valor_total for item in self.itens)
+
+    def add_item(self, item: ItemPedido) -> None:
         self.itens.append(item)
-        self.valor_total += item.valor_total
 
     def avancar_status(self) -> None:
         self.status = self.status.proximo_estado()
