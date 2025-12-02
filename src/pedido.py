@@ -32,6 +32,11 @@ class Pedido:
             self.situacao_aberto = False
         return self.status
 
+    def cancelar(self, motivo) -> None:
+        self.status = StatusPedido.CANCELADO
+        self.cancelamento_motivo = motivo
+        self.situacao_aberto = False
+
     def fechar_pedido(self) -> None:
         self.situacao_aberto = False
 
@@ -42,6 +47,7 @@ class FormaPagamento:
 
 class StatusPedido(Enum):
     A_CAMINHO = 'a caminho'
+    CANCELADO = 'cancelado'
     EM_PREPARO = 'em preparo'
     ENTREGUE = 'entregue'
     PRONTO = 'pronto'
@@ -60,6 +66,7 @@ PROXIMO_STATUS_PEDIDO = {
     StatusPedido.PRONTO: StatusPedido.A_CAMINHO,
     StatusPedido.A_CAMINHO: StatusPedido.ENTREGUE,
     StatusPedido.ENTREGUE: StatusPedido.ENTREGUE,
+    StatusPedido.CANCELADO: StatusPedido.CANCELADO,
 }
 
 
