@@ -28,6 +28,9 @@ class Pedido:
         self.status = self.status.proximo_estado()
         if self.status == StatusPedido.ENTREGUE:
             self.situacao_aberto = False
+    
+    def fechar_pedido(self) -> None:
+        self.situacao_aberto = False
 
 
 class FormaPagamento:
