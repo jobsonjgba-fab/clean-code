@@ -26,11 +26,12 @@ class Pedido:
     def add_item(self, item: ItemPedido) -> None:
         self.itens.append(item)
 
-    def avancar_status(self) -> None:
+    def avancar_status(self) -> "StatusPedido":
         self.status = self.status.proximo_estado()
         if self.status == StatusPedido.ENTREGUE:
             self.situacao_aberto = False
-    
+        return self.status
+
     def fechar_pedido(self) -> None:
         self.situacao_aberto = False
 

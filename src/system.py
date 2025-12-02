@@ -19,9 +19,13 @@ class System:
     def add_pedido(self, pedido: Pedido) -> None:
         self.pedidos_abertos.append(pedido)
 
-    def avancar_status_primeiro_pedido(self) -> None:
-        # TODO: implementar corretamente a lógica de avanço de status do pedido
-        self.pedidos_abertos[0].status = StatusPedido.EM_PREPARO
+    def avancar_status_primeiro_pedido(self) -> StatusPedido:
+        primeiro_pedido = self.pedidos_abertos[0]
+        novo_estado = primeiro_pedido.avancar_status()
+        if novo_estado == StatusPedido.ENTREGUE:
+            # TODO: reavaliar esta lógica, pois não está utilizando o primeiro_pedido
+            self.processar_proximo_pedido()
+        return primeiro_pedido.status
 
     def listar_pedidos_abertos(self) -> list:
         return list(
