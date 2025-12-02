@@ -28,6 +28,10 @@
 :white_check_mark: tests/test_pedido.py::TestPedido::test_item_quantidade_nao_pode_ser_negativa  
 :white_check_mark: tests/test_pedido.py::TestPedido::test_item_quantidade_deve_ser_inteira  
 
+| 6 | Atualizar situação do pedido  
+
+:white_check_mark: tests/test_pedido.py::TestPedido::test_status_inicial_e_fluxo_avanco  
+
 | 7 | Listar pedidos em aberto  
 
 :white_check_mark: tests/test_system.py::TestSystem::test_listar_pedidos_abertos_mostra_status  
@@ -57,7 +61,6 @@
 
 | 6 | Atualizar situação do pedido (depdende de | 4 |)  
 
-:black_square_button: tests/test_pedido.py::TestPedido::test_status_inicial_e_fluxo_avanco  
 :black_square_button: tests/test_pedido.py::TestPedido::test_fechar_pedido_sem_itens  
 :black_square_button: tests/test_pedido.py::TestPedido::test_modify_item_in_pedido  
 :black_square_button: tests/test_pedido.py::TestPedido::test_modify_pedido_state  
