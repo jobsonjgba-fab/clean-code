@@ -10,7 +10,10 @@ class ItemPedido:
         self.opcao_menu = cardapio
         self._quantidade = quantidade
         self.observacao = observacao
-        self.valor_total = cardapio.valor * quantidade
+
+    @property
+    def valor_total(self) -> float:
+        return self.opcao_menu.valor * self.quantidade
 
     @property
     def quantidade(self) -> int:

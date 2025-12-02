@@ -16,13 +16,24 @@ class Pedido:
         self.data_hora = data_pedido
         self.endereco = endereco
         self.situacao_aberto = situacao_aberto
-        self.status_pedido = StatusPedido.RECEBIDO
-        self.valor_total = 0
+        self.status = StatusPedido.RECEBIDO
         self.itens = []
 
-    def add_item(self, item: ItemPedido):
+    @property
+    def valor_total(self) -> float:
+        return sum(item.valor_total for item in self.itens)
+
+    def add_item(self, item: ItemPedido) -> None:
         self.itens.append(item)
-        self.valor_total += item.valor_total
+
+    def avancar_status(self) -> "StatusPedido":
+        self.status = self.status.proximo_estado()
+        if self.status == StatusPedido.ENTREGUE:
+            self.situacao_aberto = False
+        return self.status
+
+    def fechar_pedido(self) -> None:
+        self.situacao_aberto = False
 
 
 class FormaPagamento:
@@ -30,8 +41,26 @@ class FormaPagamento:
 
 
 class StatusPedido(Enum):
+    A_CAMINHO = 'a caminho'
     EM_PREPARO = 'em preparo'
+    ENTREGUE = 'entregue'
+    PRONTO = 'pronto'
     RECEBIDO = 'recebido'
+
+    def proximo_estado(self) -> "StatusPedido":
+        proximo = PROXIMO_STATUS_PEDIDO.get(self, None)
+        if not proximo:
+            raise AttributeError(f"Estado sem próximo estado definido: {str(self)}")
+        return proximo
+
+
+PROXIMO_STATUS_PEDIDO = {
+    StatusPedido.RECEBIDO: StatusPedido.EM_PREPARO,
+    StatusPedido.EM_PREPARO: StatusPedido.PRONTO,
+    StatusPedido.PRONTO: StatusPedido.A_CAMINHO,
+    StatusPedido.A_CAMINHO: StatusPedido.ENTREGUE,
+    StatusPedido.ENTREGUE: StatusPedido.ENTREGUE,
+}
 
 
 class FormaPagamentoInvalidaError:
