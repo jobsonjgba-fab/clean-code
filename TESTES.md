@@ -35,6 +35,7 @@
 :white_check_mark: tests/test_pedido.py::TestPedido::test_modify_pedido_state  
 :white_check_mark: tests/test_pedido.py::TestPedido::test_modify_item_in_pedido  
 :white_check_mark: tests/test_system.py::TestSystem::test_fluxo_processamento_pedidos  
+:white_check_mark: tests/test_system.py::TestSystem::test_processar_proximo_pedido_fila_vazia  
 
 | 7 | Listar pedidos em aberto  
 
@@ -66,7 +67,6 @@
 | 6 | Atualizar situação do pedido (depdende de | 4 |)  
 
 :black_square_button: tests/test_system.py::TestSystem::test_avancar_status_primeiro_pedido  
-:black_square_button: tests/test_system.py::TestSystem::test_processar_proximo_pedido_fila_vazia  
 
 | 10 | Cancelar pedido (depende de | 4 | e | 6 |)  
 

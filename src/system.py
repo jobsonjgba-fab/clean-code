@@ -44,6 +44,8 @@ class System:
         return "\n".join(item.descricao for item in self.cardapio)
 
     def processar_proximo_pedido(self) -> None:
+        if not self.pedidos_abertos:
+            return
         pedido = self.pedidos_abertos.popleft()
         pedido.fechar_pedido()
         self.pedidos_fechados.append(pedido)
