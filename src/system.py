@@ -1,13 +1,14 @@
 from collections import deque
 
-from . import Cardapio, Cliente, Pedido
+from . import Cardapio, Cliente, Pedido, StatusPedido
 
 
 class System:
     def __init__(self):
+        self.cardapio: list[Cardapio] = []
         self.clientes: list[Cliente] = []
         self.pedidos_abertos: deque[Pedido] = deque()
-        self.cardapio: list[Cardapio] = []
+        self.pedidos_fechados = []
 
     def add_cliente(self, cliente: Cliente) -> None:
         self.clientes.append(cliente)
@@ -17,6 +18,21 @@ class System:
 
     def add_pedido(self, pedido: Pedido) -> None:
         self.pedidos_abertos.append(pedido)
+
+    def avancar_status_primeiro_pedido(self) -> StatusPedido:
+        primeiro_pedido = self.pedidos_abertos[0]
+        novo_estado = primeiro_pedido.avancar_status()
+        if novo_estado == StatusPedido.ENTREGUE:
+            # TODO: reavaliar esta lógica, pois não está utilizando o primeiro_pedido
+            self.processar_proximo_pedido()
+        return primeiro_pedido.status
+
+    def listar_pedidos_abertos(self) -> list:
+        return list(
+            (pedido, pedido.status)
+            for pedido
+            in self.pedidos_abertos
+        )
 
     def mostrar_cardapio(self) -> str:
         # TODO: discutir opção na apresentação
@@ -30,6 +46,13 @@ class System:
         # TODO: outra alternativa:
         # return "\n".join(map(lambda x: x.descricao, self.cardapio))
         return "\n".join(item.descricao for item in self.cardapio)
+
+    def processar_proximo_pedido(self) -> None:
+        if not self.pedidos_abertos:
+            return
+        pedido = self.pedidos_abertos.popleft()
+        pedido.fechar_pedido()
+        self.pedidos_fechados.append(pedido)
 
     def remove_cliente_por_telefone(self, telefone: str) -> None:
         """
