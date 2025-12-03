@@ -42,31 +42,9 @@ class System:
         return self.primeiro_pedido.definir_forma_pagamento(forma_pagamento)
 
     def listar_pedidos_abertos(self) -> list:
-        # TODO: discutir em sala: ruff não permitiu o código com list()
-        #
-        # return list(
-        #     (pedido, pedido.status)
-        #     for pedido
-        #     in self.pedidos_abertos
-        # )
-        #
         return [(pedido, pedido.status) for pedido in self.pedidos_abertos]
 
     def mostrar_cardapio(self) -> str:
-        # TODO: discutir opção na apresentação
-        #
-        # listagem_cardapio = ""
-        # for index in range(len(self.cardapio)):
-        #     if index + 1 == len(self.cardapio):
-        #         listagem_cardapio += self.cardapio[index].descricao
-        #     else:
-        #         listagem_cardapio += self.cardapio[index].descricao + "\n"
-        # return listagem_cardapio
-        #
-        # TODO: outra alternativa:
-        #
-        # return "\n".join(map(lambda x: x.descricao, self.cardapio))
-        #
         return "\n".join(item.descricao for item in self.cardapio)
 
     def processar_proximo_pedido(self, pedido: "Pedido | None" = None) -> None:
@@ -81,51 +59,12 @@ class System:
         self.pedidos_fechados.append(pedido)
 
     def remove_cliente_por_telefone(self, telefone: str) -> None:
-        """
-        Filtra a lista de clientes, deixando permanecer apenas
-        aqueles que não possuam o telefone informado
-        """
-        # TODO: discutir as alternativas abaixo com os demais grupos
-        #
-        # clientes_que_permanecem = lambda cliente: cliente.telefone != telefone
-        # self.clientes = list(filter(clientes_que_permanecem, self.clientes))
-        #
-        # TODO: outra alternativa
-        #
-        # nova_lista_clientes: list[Cliente] = []
-        # for cliente in self.clientes:
-        #     if cliente.telefone != telefone:
-        #         nova_lista_clientes.append(cliente)
-        # self.clientes = nova_lista_clientes
-        #
         self.clientes = [
             cliente for cliente in self.clientes if cliente.telefone != telefone
         ]
 
     def search_cliente_por_nome(self, nome: str) -> "list[Cliente]":
-        """
-        Encontra todos os clientes por nome 'parcial'
-        """
-        # TODO: discutir as alternativas com os demais grupos
-        #
-        # clientes_encontrados: list[Cliente] = []
-        # for cliente in self.clientes:
-        #     if nome in cliente.nome:
-        #         clientes_encontrados.append(cliente)
-        # return clientes_encontrados
-        #
         return [cliente for cliente in self.clientes if nome in cliente.nome]
 
     def search_cliente_por_telefone(self, telefone: str) -> "list[Cliente]":
-        """
-        Encontra todos os clientes por telefone 'exato'
-        """
-        # TODO: discutir as alternativas com os demais grupos
-        #
-        # clientes_encontrados: list[Cliente] = []
-        # for cliente in self.clientes:
-        #     if cliente.telefone == telefone:
-        #         clientes_encontrados.append(cliente)
-        # return clientes_encontrados
-        #
         return [cliente for cliente in self.clientes if telefone == cliente.telefone]
