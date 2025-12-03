@@ -61,6 +61,7 @@
 
 :white_check_mark: tests/test_pedido.py::TestPedido::test_cancelar_pedido_define_motivo_e_fecha  
 :white_check_mark: tests/test_pedido.py::TestPedido::test_cancelar_pedido_entregue_dispara_erro  
+:white_check_mark: tests/test_pedido.py::TestPedido::test_cancelar_sem_motivo_dispara_erro  
 
 
 # A implementar:
@@ -75,7 +76,6 @@
 
 | 10 | Cancelar pedido (depende de | 4 | e | 6 |)  
 
-:black_square_button: tests/test_pedido.py::TestPedido::test_cancelar_sem_motivo_dispara_erro  
 :black_square_button: tests/test_system.py::TestSystem::test_cancelar_primeiro_pedido  
 
 | 11 | Definir forma de pagamento (talvez dependa de | 4 | e | 6 |)  

@@ -32,7 +32,9 @@ class Pedido:
             self.situacao_aberto = False
         return self.status
 
-    def cancelar(self, motivo) -> None:
+    def cancelar(self, motivo: str) -> None:
+        if motivo_invalido(motivo):
+            raise MotivoCancelamentoObrigatorioError()
         if self.status == StatusPedido.ENTREGUE:
             raise PedidoJaEntregueError()
         self.status = StatusPedido.CANCELADO
@@ -41,6 +43,12 @@ class Pedido:
 
     def fechar_pedido(self) -> None:
         self.situacao_aberto = False
+
+
+def motivo_invalido(motivo: str) -> bool:
+    if not motivo:
+        return True
+    return not motivo.strip()
 
 
 class FormaPagamento:
@@ -76,7 +84,7 @@ class FormaPagamentoInvalidaError:
     pass
 
 
-class MotivoCancelamentoObrigatorioError:
+class MotivoCancelamentoObrigatorioError(ValueError):
     pass
 
 
