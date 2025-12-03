@@ -12,12 +12,13 @@ class Pedido:
         endereco: str,
         situacao_aberto: bool = True,
     ):
+        self.cancelamento_motivo = ""
         self.cliente = cliente
         self.data_hora = data_pedido
         self.endereco = endereco
+        self.itens: list[ItemPedido] = []
         self.situacao_aberto = situacao_aberto
         self.status = StatusPedido.RECEBIDO
-        self.itens = []
 
     @property
     def valor_total(self) -> float:
