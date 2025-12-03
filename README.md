@@ -45,9 +45,3 @@ Requisitos: Python 3.13, ambiente virtual (pyproject já configurado para venv `
   - `python -m ruff format .`
 
 Dica: os limites de linha são controlados pelo Black; o Ruff ignora E501 neste projeto para evitar conflitos com comentários/docstrings longos.
-
-## Contato
-
-Em caso de dúvidas, entre em contato:
-- E-mail: [jprcarvalho1@gmail.com](mailto:jprcarvalho1@gmail.com)
-- Telefone/WhatsApp: [(75) 99237-0004](tel:+5575992370004)
