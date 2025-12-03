@@ -42,7 +42,10 @@ class Pedido:
         self.situacao_aberto = False
 
     def definir_forma_pagamento(self, forma_pagamento: str) -> str:
-        self.forma_pagamento = forma_pagamento.lower()
+        forma = forma_pagamento.lower()
+        if forma_pagamento_invalida(forma):
+            raise FormaPagamentoInvalidaError()
+        self.forma_pagamento = forma
         return self.forma_pagamento
 
     def fechar_pedido(self) -> None:
@@ -53,6 +56,10 @@ def motivo_invalido(motivo: str) -> bool:
     if not motivo:
         return True
     return not motivo.strip()
+
+
+def forma_pagamento_invalida(forma_pagamento: str) -> bool:
+    return forma_pagamento == "boleto"
 
 
 class FormaPagamento:
@@ -84,7 +91,7 @@ PROXIMO_STATUS_PEDIDO = {
 }
 
 
-class FormaPagamentoInvalidaError:
+class FormaPagamentoInvalidaError(ValueError):
     pass
 
 
