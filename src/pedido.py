@@ -33,6 +33,8 @@ class Pedido:
         return self.status
 
     def cancelar(self, motivo) -> None:
+        if self.status == StatusPedido.ENTREGUE:
+            raise PedidoJaEntregueError()
         self.status = StatusPedido.CANCELADO
         self.cancelamento_motivo = motivo
         self.situacao_aberto = False
@@ -82,5 +84,5 @@ class PagamentoNaoPermitidoError:
     pass
 
 
-class PedidoJaEntregueError:
+class PedidoJaEntregueError(Exception):
     pass
