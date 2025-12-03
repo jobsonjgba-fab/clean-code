@@ -27,6 +27,12 @@ class System:
             self.processar_proximo_pedido()
         return primeiro_pedido.status
 
+    def cancelar_primeiro_pedido(self, motivo: str) -> bool:
+        primeiro_pedido = self.pedidos_abertos[0]
+        primeiro_pedido.cancelar(motivo)
+        self.processar_proximo_pedido()
+        return True
+
     def listar_pedidos_abertos(self) -> list:
         return list(
             (pedido, pedido.status)
