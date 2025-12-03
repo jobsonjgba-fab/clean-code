@@ -8,7 +8,13 @@ class System:
         self.cardapio: list[Cardapio] = []
         self.clientes: list[Cliente] = []
         self.pedidos_abertos: deque[Pedido] = deque()
-        self.pedidos_fechados = []
+        self.pedidos_fechados: list[Pedido] = []
+
+    @property
+    def primeiro_pedido(self) -> Pedido:
+        if not self.pedidos_abertos:
+            raise IndexError("Nenhum pedido registrado no sistema")
+        return self.pedidos_abertos[0]
 
     def add_cliente(self, cliente: Cliente) -> None:
         self.clientes.append(cliente)
@@ -20,36 +26,35 @@ class System:
         self.pedidos_abertos.append(pedido)
 
     def avancar_status_primeiro_pedido(self) -> StatusPedido:
-        primeiro_pedido = self.pedidos_abertos[0]
-        novo_estado = primeiro_pedido.avancar_status()
+        novo_estado = self.primeiro_pedido.avancar_status()
         if novo_estado == StatusPedido.ENTREGUE:
-            # TODO: reavaliar esta lógica, pois não está utilizando o primeiro_pedido
-            self.processar_proximo_pedido()
-        return primeiro_pedido.status
+            self.processar_proximo_pedido(self.primeiro_pedido)
+        return novo_estado
 
     def cancelar_primeiro_pedido(self, motivo: str) -> bool:
-        primeiro_pedido = self.pedidos_abertos[0]
-        primeiro_pedido.cancelar(motivo)
-        self.processar_proximo_pedido()
+        self.primeiro_pedido.cancelar(motivo)
+        self.processar_proximo_pedido(self.primeiro_pedido)
         return True
 
     def definir_forma_pagamento_primeiro_pedido(
         self, forma_pagamento: "str | FormaPagamento"
     ) -> str:
-        primeiro_pedido = self.pedidos_abertos[0]
-        return primeiro_pedido.definir_forma_pagamento(forma_pagamento)
+        return self.primeiro_pedido.definir_forma_pagamento(forma_pagamento)
 
     def listar_pedidos_abertos(self) -> list:
         # TODO: discutir em sala: ruff não permitiu o código com list()
+        #
         # return list(
         #     (pedido, pedido.status)
         #     for pedido
         #     in self.pedidos_abertos
         # )
+        #
         return [(pedido, pedido.status) for pedido in self.pedidos_abertos]
 
     def mostrar_cardapio(self) -> str:
         # TODO: discutir opção na apresentação
+        #
         # listagem_cardapio = ""
         # for index in range(len(self.cardapio)):
         #     if index + 1 == len(self.cardapio):
@@ -57,14 +62,21 @@ class System:
         #     else:
         #         listagem_cardapio += self.cardapio[index].descricao + "\n"
         # return listagem_cardapio
+        #
         # TODO: outra alternativa:
+        #
         # return "\n".join(map(lambda x: x.descricao, self.cardapio))
+        #
         return "\n".join(item.descricao for item in self.cardapio)
 
-    def processar_proximo_pedido(self) -> None:
+    def processar_proximo_pedido(self, pedido: "Pedido | None" = None) -> None:
         if not self.pedidos_abertos:
             return
-        pedido = self.pedidos_abertos.popleft()
+        if not pedido:
+            pedido = self.primeiro_pedido
+        elif pedido not in self.pedidos_abertos:
+            return None
+        self.pedidos_abertos.remove(pedido)
         pedido.fechar_pedido()
         self.pedidos_fechados.append(pedido)
 
@@ -77,7 +89,7 @@ class System:
         #
         # clientes_que_permanecem = lambda cliente: cliente.telefone != telefone
         # self.clientes = list(filter(clientes_que_permanecem, self.clientes))
-
+        #
         nova_lista_clientes: list[Cliente] = []
         for cliente in self.clientes:
             if cliente.telefone != telefone:
