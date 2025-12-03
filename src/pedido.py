@@ -41,12 +41,16 @@ class Pedido:
         self.cancelamento_motivo = motivo
         self.situacao_aberto = False
 
-    def definir_forma_pagamento(self, forma_pagamento: str) -> str:
-        forma = forma_pagamento.lower()
-        if forma_pagamento_invalida(forma):
-            raise FormaPagamentoInvalidaError()
-        self.forma_pagamento = forma
-        return self.forma_pagamento
+    def definir_forma_pagamento(self, forma_pagamento: "str | FormaPagamento") -> str:
+        if self.status == StatusPedido.CANCELADO:
+            raise PagamentoNaoPermitidoError()
+        if isinstance(forma_pagamento, str):
+            forma_pagamento = forma_pagamento.lower()
+        try:
+            self.forma_pagamento = FormaPagamento(forma_pagamento).value
+            return self.forma_pagamento
+        except ValueError as error:
+            raise FormaPagamentoInvalidaError() from error
 
     def fechar_pedido(self) -> None:
         self.situacao_aberto = False
@@ -62,8 +66,10 @@ def forma_pagamento_invalida(forma_pagamento: str) -> bool:
     return forma_pagamento == "boleto"
 
 
-class FormaPagamento:
-    pass
+class FormaPagamento(Enum):
+    CARTAO = "cartao"
+    DINHEIRO = "dinheiro"
+    PIX = "pix"
 
 
 class StatusPedido(Enum):
@@ -99,7 +105,7 @@ class MotivoCancelamentoObrigatorioError(ValueError):
     pass
 
 
-class PagamentoNaoPermitidoError:
+class PagamentoNaoPermitidoError(Exception):
     pass
 
 
