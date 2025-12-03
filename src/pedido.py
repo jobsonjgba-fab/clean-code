@@ -41,6 +41,10 @@ class Pedido:
         self.cancelamento_motivo = motivo
         self.situacao_aberto = False
 
+    def definir_forma_pagamento(self, forma_pagamento: str) -> str:
+        self.forma_pagamento = forma_pagamento
+        return self.forma_pagamento
+
     def fechar_pedido(self) -> None:
         self.situacao_aberto = False
 
