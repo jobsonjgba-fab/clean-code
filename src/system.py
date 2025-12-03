@@ -34,11 +34,13 @@ class System:
         return True
 
     def listar_pedidos_abertos(self) -> list:
-        return list(
-            (pedido, pedido.status)
-            for pedido
-            in self.pedidos_abertos
-        )
+        # TODO: discutir em sala: ruff não permitiu o código com list()
+        # return list(
+        #     (pedido, pedido.status)
+        #     for pedido
+        #     in self.pedidos_abertos
+        # )
+        return [(pedido, pedido.status) for pedido in self.pedidos_abertos]
 
     def mostrar_cardapio(self) -> str:
         # TODO: discutir opção na apresentação

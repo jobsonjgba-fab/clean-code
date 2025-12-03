@@ -56,15 +56,15 @@ class FormaPagamento:
 
 
 class StatusPedido(Enum):
-    A_CAMINHO = 'a caminho'
-    CANCELADO = 'cancelado'
-    EM_PREPARO = 'em preparo'
-    ENTREGUE = 'entregue'
-    PRONTO = 'pronto'
-    RECEBIDO = 'recebido'
+    A_CAMINHO = "a caminho"
+    CANCELADO = "cancelado"
+    EM_PREPARO = "em preparo"
+    ENTREGUE = "entregue"
+    PRONTO = "pronto"
+    RECEBIDO = "recebido"
 
     def proximo_estado(self) -> "StatusPedido":
-        proximo = PROXIMO_STATUS_PEDIDO.get(self, None)
+        proximo = PROXIMO_STATUS_PEDIDO.get(self)
         if not proximo:
             raise AttributeError(f"Estado sem próximo estado definido: {str(self)}")
         return proximo
