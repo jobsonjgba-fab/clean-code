@@ -71,6 +71,7 @@
 :white_check_mark: tests/test_pedido.py::TestPedido::test_definir_forma_pagamento_pix  
 :white_check_mark: tests/test_pedido.py::TestPedido::test_definir_forma_pagamento_invalida_gera_erro  
 :white_check_mark: tests/test_pedido.py::TestPedido::test_definir_pagamento_apos_conclusao_dispara_erro  
+:white_check_mark: tests/test_system.py::TestSystem::test_definir_forma_pagamento_primeiro_pedido  
 
 # A implementar:
 
@@ -82,6 +83,4 @@
 
 ## Restantes
 
-| 11 | Definir forma de pagamento (talvez dependa de | 4 | e | 6 |)  
-
-:black_square_button: tests/test_system.py::TestSystem::test_definir_forma_pagamento_primeiro_pedido  
+Nenhum.
