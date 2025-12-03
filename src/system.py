@@ -1,6 +1,6 @@
 from collections import deque
 
-from . import Cardapio, Cliente, Pedido, StatusPedido
+from . import Cardapio, Cliente, FormaPagamento, Pedido, StatusPedido
 
 
 class System:
@@ -32,6 +32,12 @@ class System:
         primeiro_pedido.cancelar(motivo)
         self.processar_proximo_pedido()
         return True
+
+    def definir_forma_pagamento_primeiro_pedido(
+        self, forma_pagamento: "str | FormaPagamento"
+    ) -> str:
+        primeiro_pedido = self.pedidos_abertos[0]
+        return primeiro_pedido.definir_forma_pagamento(forma_pagamento)
 
     def listar_pedidos_abertos(self) -> list:
         # TODO: discutir em sala: ruff não permitiu o código com list()
