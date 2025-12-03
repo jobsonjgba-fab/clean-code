@@ -32,8 +32,23 @@ class Pedido:
             self.situacao_aberto = False
         return self.status
 
+    def cancelar(self, motivo: str) -> None:
+        if motivo_invalido(motivo):
+            raise MotivoCancelamentoObrigatorioError()
+        if self.status == StatusPedido.ENTREGUE:
+            raise PedidoJaEntregueError()
+        self.status = StatusPedido.CANCELADO
+        self.cancelamento_motivo = motivo
+        self.situacao_aberto = False
+
     def fechar_pedido(self) -> None:
         self.situacao_aberto = False
+
+
+def motivo_invalido(motivo: str) -> bool:
+    if not motivo:
+        return True
+    return not motivo.strip()
 
 
 class FormaPagamento:
@@ -42,6 +57,7 @@ class FormaPagamento:
 
 class StatusPedido(Enum):
     A_CAMINHO = 'a caminho'
+    CANCELADO = 'cancelado'
     EM_PREPARO = 'em preparo'
     ENTREGUE = 'entregue'
     PRONTO = 'pronto'
@@ -60,6 +76,7 @@ PROXIMO_STATUS_PEDIDO = {
     StatusPedido.PRONTO: StatusPedido.A_CAMINHO,
     StatusPedido.A_CAMINHO: StatusPedido.ENTREGUE,
     StatusPedido.ENTREGUE: StatusPedido.ENTREGUE,
+    StatusPedido.CANCELADO: StatusPedido.CANCELADO,
 }
 
 
@@ -67,7 +84,7 @@ class FormaPagamentoInvalidaError:
     pass
 
 
-class MotivoCancelamentoObrigatorioError:
+class MotivoCancelamentoObrigatorioError(ValueError):
     pass
 
 
@@ -75,5 +92,5 @@ class PagamentoNaoPermitidoError:
     pass
 
 
-class PedidoJaEntregueError:
+class PedidoJaEntregueError(Exception):
     pass
