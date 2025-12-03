@@ -42,7 +42,7 @@ class Pedido:
         self.situacao_aberto = False
 
     def definir_forma_pagamento(self, forma_pagamento: str) -> str:
-        self.forma_pagamento = forma_pagamento
+        self.forma_pagamento = forma_pagamento.lower()
         return self.forma_pagamento
 
     def fechar_pedido(self) -> None:
