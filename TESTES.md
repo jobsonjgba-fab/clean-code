@@ -77,9 +77,22 @@
 
 ## Sugestão de sequência
 
-| 4 |, | 8 | primeiro  
+| 1 |, | 2 | e | 3 | sequencialmente  
+| 4 |, | 8 | em seguida  
 | 5 |, | 6 | e | 9 | em seguida  
 | 7 | e | 10 | e | 11 | por último  
+
+## Sequência seguida
+
+| 1 |  
+| 2 |  
+| 3 |  
+| 4 |, | 5 | (partes) e | 8 | de forma concomitante  
+| 9 |  
+| 5 |  
+| 7 | e | 6 | (interdenpedentes)  
+| 10 |  
+| 11 |
 
 ## Restantes
 
