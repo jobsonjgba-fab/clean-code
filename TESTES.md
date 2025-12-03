@@ -97,3 +97,7 @@
 ## Restantes
 
 Nenhum.
+
+## Refatoração final
+
+https://chatgpt.com/share/692fa937-4460-800c-bedd-3ea03d372dd8

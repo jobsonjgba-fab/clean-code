@@ -75,7 +75,7 @@ class System:
         if not pedido:
             pedido = self.primeiro_pedido
         elif pedido not in self.pedidos_abertos:
-            return None
+            return
         self.pedidos_abertos.remove(pedido)
         pedido.fechar_pedido()
         self.pedidos_fechados.append(pedido)
@@ -90,28 +90,42 @@ class System:
         # clientes_que_permanecem = lambda cliente: cliente.telefone != telefone
         # self.clientes = list(filter(clientes_que_permanecem, self.clientes))
         #
-        nova_lista_clientes: list[Cliente] = []
-        for cliente in self.clientes:
-            if cliente.telefone != telefone:
-                nova_lista_clientes.append(cliente)
-        self.clientes = nova_lista_clientes
+        # TODO: outra alternativa
+        #
+        # nova_lista_clientes: list[Cliente] = []
+        # for cliente in self.clientes:
+        #     if cliente.telefone != telefone:
+        #         nova_lista_clientes.append(cliente)
+        # self.clientes = nova_lista_clientes
+        #
+        self.clientes = [
+            cliente for cliente in self.clientes if cliente.telefone != telefone
+        ]
 
     def search_cliente_por_nome(self, nome: str) -> "list[Cliente]":
         """
         Encontra todos os clientes por nome 'parcial'
         """
-        clientes_encontrados: list[Cliente] = []
-        for cliente in self.clientes:
-            if nome in cliente.nome:
-                clientes_encontrados.append(cliente)
-        return clientes_encontrados
+        # TODO: discutir as alternativas com os demais grupos
+        #
+        # clientes_encontrados: list[Cliente] = []
+        # for cliente in self.clientes:
+        #     if nome in cliente.nome:
+        #         clientes_encontrados.append(cliente)
+        # return clientes_encontrados
+        #
+        return [cliente for cliente in self.clientes if nome in cliente.nome]
 
     def search_cliente_por_telefone(self, telefone: str) -> "list[Cliente]":
         """
         Encontra todos os clientes por telefone 'exato'
         """
-        clientes_encontrados: list[Cliente] = []
-        for cliente in self.clientes:
-            if cliente.telefone == telefone:
-                clientes_encontrados.append(cliente)
-        return clientes_encontrados
+        # TODO: discutir as alternativas com os demais grupos
+        #
+        # clientes_encontrados: list[Cliente] = []
+        # for cliente in self.clientes:
+        #     if cliente.telefone == telefone:
+        #         clientes_encontrados.append(cliente)
+        # return clientes_encontrados
+        #
+        return [cliente for cliente in self.clientes if telefone == cliente.telefone]
